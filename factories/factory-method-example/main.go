@@ -11,7 +11,7 @@ import "fmt"
 
 // Abstract Creator
 type EmployeeCreator interface {
-	CreateEmployee() Employee
+	CreateEmployee(name string) Employee
 }
 
 // Concreate Creator
@@ -67,11 +67,11 @@ func (e *ManagerEmployee) SetName(name string) {
 }
 
 func main() {
-	devCreator := NewDeveloperCreator()
+	var devCreator EmployeeCreator = NewDeveloperCreator()
 	developer := devCreator.CreateEmployee("William")
 	fmt.Println(developer.GetName())
 
-	managerCreator := NewManagerCreator()
+	var managerCreator EmployeeCreator = NewManagerCreator()
 	manager := managerCreator.CreateEmployee("Edward")
 	fmt.Println(manager.GetName())
 }
